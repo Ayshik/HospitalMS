@@ -8,11 +8,11 @@
   </head>
 
   <body>
-    <form class="box" action="" method="post">
+    <form class="box" action="../Controller/validate.php" method="post">
       <h1>Login</h1>
-      <input type="text" name="uname" placeholder="Username"  required/>
-      <input type="password" name="psw" placeholder="Password" required/>
-      <input type="submit" name="login" value="Login" />
+      <input type="text" name="name" placeholder="Username"  required/>
+      <input type="password" name="password" placeholder="Password" required/>
+      <input type="submit" name="submit" value="Login" />
     </form>
   </body>
 </html>
