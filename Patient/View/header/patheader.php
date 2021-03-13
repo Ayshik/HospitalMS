@@ -33,5 +33,6 @@ if (!isLoggedIn()) {
     <li><a href="MakeAppoinment.php"><i class="far fa-question-circle"></i>Make an Appoinment</a></li>
     <li><a href="ViewAppoinment.php"><i class="fas fa-sliders-h"></i>View Appoinment</a></li>
     <li><a href="History.php"><i class="far fa-envelope"></i>History</a></li>
+	<li><a href="../Controller/logout.php"><i class="far fa-envelope"></i>Logout</a></li>
 </ul>
 </div>
