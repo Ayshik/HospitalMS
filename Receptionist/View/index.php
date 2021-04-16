@@ -1,3 +1,61 @@
+<?php session_start();
+
+require "../Models/db_connect.php";
+global $con;
+
+$uname="";
+$err_uname="";
+$psw="";
+$err_psw="";
+$err_invalid="";
+$has_error=false;
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+
+  if(empty($_POST['uname']))
+  {
+    $err_uname="*Username Required";
+    $has_error=true;
+
+
+  }
+  else
+  {
+    $uname=$_POST['uname'];
+  }
+  if(empty($_POST['psw']))
+  {
+    $err_psw="*Password Required";
+    $has_error=true;
+
+
+  }
+  else
+  {
+    $psw=$_POST['psw'];
+  }
+  if(!$has_error)
+  {
+    $query = "SELECT username from login where username='$uname' and password='$psw'";
+    $result = mysqli_query($con, $query);
+    if(mysqli_num_rows($result) > 0)
+    {
+      $row=mysqli_fetch_assoc($result);
+      $_SESSION["loggedinuser"]=$row["username"];
+
+      header("Location:Receptionist.php");
+    }
+    else
+    {
+echo '<script>alert("Please check your username and Password")</script>';
+    }
+  }
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,25 +66,20 @@
     <div class="wrapper">
       <div class="title">
 Login Form</div>
-<form method="post" action="../Controller/validate.php">
+<form method="post" action="">
         <div class="field">
-          <input type="text" name="name" required>
+          <input type="text" name="uname">
           <label>User Name</label>
+		    <td><span> <?php echo $err_uname;?></span></td>
         </div>
 <div class="field">
-          <input type="password" name="password" required>
+          <input type="password" name="psw">
           <label>Password</label>
+		   <td><span><?php echo $err_psw;?></span></td>  
         </div>
-<div class="content">
-          <div class="checkbox">
-            <input type="checkbox" name="rm" id="remember-me">
-            <label for="remember-me">Remember me</label>
-          </div>
-<div class="pass-link">
-<a href="#">Forgot password?</a></div>
-</div>
+
 <div class="field">
-          <input type="submit" name="submit" value="Login">
+          <input type="submit" name="login" value="Login" />
         </div>
 
 </form>

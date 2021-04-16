@@ -1,6 +1,6 @@
 <?php
-  $name="noor232";
-   $password="noor12";
+  $name="afsana002";
+   $password="afsana12";
 if (isset($_POST['submit'])) {
 
 	$getname=$_POST['name'];

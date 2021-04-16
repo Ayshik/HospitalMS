@@ -30,7 +30,7 @@ if (!isLoggedIn()) {
     <div class="bgimage">
       <div class="menu">
         <div class="leftmenu">
-          <h3><a href="Receptionist.php">Receptionist~<?php echo $_SESSION["name"];?></a></h3>
+          <h3><a href="Receptionist.php">Receptionist~<?php echo $_SESSION["loggedinuser"];?></a></h3>
         </div>
         <div class="rightmenu">
           <ul>

@@ -18,13 +18,14 @@ if (!isLoggedIn()) {
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
+ 
     <input type="checkbox" id="check">
     <label for="check">
       <i class="fas fa-bars" id="btn"></i>
       <i class="fas fa-times" id="cancel"></i>
     </label>
     <div class="sidebar">
-    <header>Patient Panel</header>
+    <header>Patient ~ <?php echo $_SESSION["name"];?></header>
   <ul>
     <li><a href="PatientProfile.php"><i class="fas fa-qrcode"></i>My Profile</a></li>
     <li><a href="PatientCurrentStatus.php"><i class="fas fa-link"></i>Current Status</a></li>
