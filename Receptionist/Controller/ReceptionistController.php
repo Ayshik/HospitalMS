@@ -56,8 +56,32 @@ function Profileupdate()
 }
 
 
+ function getpatientreq()
+  {
+   
+
+   
+
+    $query="SELECT * FROM patientreq";
+    $product=get($query);
+    return $product;
 
 
+  }
+
+
+ function getfreeroom()
+  {
+   
+
+   
+
+    $query="SELECT * FROM room where status='Free'";
+    $product=get($query);
+    return $product;
+
+
+  }
 
 
 

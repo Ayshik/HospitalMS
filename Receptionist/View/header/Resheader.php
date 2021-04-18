@@ -24,7 +24,7 @@ if (!isLoggedIn()) {
       rel="stylesheet"
 	 
     />
-	
+	 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
     <div class="bgimage">
@@ -35,7 +35,7 @@ if (!isLoggedIn()) {
         <div class="rightmenu">
           <ul>
             <li><a href="ReceptionistProfile.php">My Profile</a></li>
-            <li><a href="AdmitPatient.php">Admit Patient</a></li>
+            
             <li><a href="PatientRequest.php">Patient Request</a></li>
             <li><a href="RoomAvailable.php">Room Available</a></li>
             <li><a href="AllDocTime.php">Doctor & Time</a></li>

@@ -1,6 +1,8 @@
 
 <?php
 include('header/Resheader.php');
+require_once ('../Controller/ReceptionistController.php');
+$info = getpatientreq();
 ?>
 
 <style>
@@ -73,7 +75,7 @@ input[type=submit]:hover {
     <th style="color:black">Sl </th>
     <th style="color:black">Patient Id</th>
 
-    <th style="color:black">Location</th>
+    
 <th style="color:black">Need</th>
     <th style="color:black">Room No</th>
 	<th style="color:black">Time</th>
@@ -81,51 +83,23 @@ input[type=submit]:hover {
 
   </tr>
   <tbody>
-    <tr>
-	<td>1</td>
-    <td>Afsana12</td>
-    <td>1st floor</td>
-    
-	<td>Food</td>
-	<td>134</td>
-	<td>8.00 Am</td>
-  </tr>
-  <tr>
-	<td>1</td>
-    <td>Afsana12</td>
-    <td>1st floor</td>
-    
-	<td>Food</td>
-	<td>134</td>
-	<td>8.00 Am</td>
-  </tr>
-  <tr>
-	<td>1</td>
-    <td>Afsana12</td>
-    <td>1st floor</td>
-    
-	<td>Food</td>
-	<td>134</td>
-	<td>8.00 Am</td>
-  </tr>
-  <tr>
-	<td>1</td>
-    <td>Afsana12</td>
-    <td>1st floor</td>
-    
-	<td>Food</td>
-	<td>134</td>
-	<td>8.00 Am</td>
-  </tr>
-  <tr>
-	<td>1</td>
-    <td>Afsana12</td>
-    <td>1st floor</td>
-    
-	<td>Food</td>
-	<td>134</td>
-	<td>8.00 Am</td>
-  </tr>
+    <?php
+      foreach($info as $info)
+      {
+        echo "<tr>";
+
+        echo "<td>".$info["sl"]."</td>";
+        echo "<td>".$info["patientid"]."</td>";
+  echo "<td>".$info["need"]."</td>";
+
+echo "<td>".$info["roomno"]."</td>";
+
+            echo "<td>".$info["date"]."</td>";
+
+
+        echo "</tr>";
+      }
+    ?>
 
   </tbody>
 
@@ -140,5 +114,26 @@ input[type=submit]:hover {
 
 
 	</div>
+	<script>
+ function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+        </script>
   </body>
 </html>

@@ -1,6 +1,10 @@
 
 <?php
 include('header/Resheader.php');
+
+require_once ('../Controller/ReceptionistController.php');
+
+$info=getfreeroom();
 ?>
 
 
@@ -62,6 +66,23 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+.btn:hover {
+     background-color: black;
+   }
+
+   a:link{
+
+
+     color: #05b30a;
+     text-decoration: none;
+
+   }
+   a:visited{
+
+  color: white;
+
+   }
 </style>
  <form  method="post" action="" enctype="multipart/form-data">
            
@@ -77,74 +98,28 @@ input[type=submit]:hover {
     <th style="color:black">Location</th>
 <th style="color:black">Catagory</th>
     <th style="color:black">Room No</th>
+	 <th style="color:black">        </th>
 
 
   </tr>
   <tbody>
-    <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
-   <tr>
-	<td>1</td>
-    <td>emargency</td>
-    <td>1st floor</td>
-    
-	<td>single bed</td>
-	<td>134</td>
-  </tr>
+    <?php
+      foreach($info as $info)
+      {
+        echo "<tr>";
+
+        echo "<td>".$info["sl"]."</td>";
+        echo "<td>".$info["type"]."</td>";
+  echo "<td>".$info["location"]."</td>";
+
+echo "<td>".$info["catagory"]."</td>";
+
+            echo "<td>".$info["roomno"]."</td>";
+echo '<td><button class="btn"><a href="AdmitPatient.php?id='.$info["roomno"].'" i class="fa fa-plus">  Add</a></td>';
+
+        echo "</tr>";
+      }
+    ?>
 
   </tbody>
 
@@ -154,5 +129,27 @@ input[type=submit]:hover {
 
             </form>
 	</div>
+	<script>
+ function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+        </script>
+
   </body>
 </html>
