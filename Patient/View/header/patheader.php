@@ -1,7 +1,7 @@
 
 <?php
       session_start();
-	  include('../Controller/userval.php');
+	 include('../Controller/userval.php');
 if (!isLoggedIn()) {
 
   header('location: ../index.php');
@@ -25,11 +25,12 @@ if (!isLoggedIn()) {
       <i class="fas fa-times" id="cancel"></i>
     </label>
     <div class="sidebar">
-    <header>Patient ~ <?php echo $_SESSION["name"];?></header>
+    <header>Patient ~ <?php echo $_SESSION["loggedinuser"];?></header>
   <ul>
     <li><a href="PatientProfile.php"><i class="fas fa-qrcode"></i>My Profile</a></li>
     <li><a href="PatientCurrentStatus.php"><i class="fas fa-link"></i>Current Status</a></li>
     <li><a href="PatientTest.php"><i class="fas fa-stream"></i>Tests</a></li>
+	<li><a href="Request.php"><i class="fas fa-stream"></i>Request</a></li>
     <li><a href="DoctorMedicine.php"><i class="fas fa-calendar-week"></i>Doctor and Medicine</a></li>
     <li><a href="MakeAppoinment.php"><i class="far fa-question-circle"></i>Make an Appoinment</a></li>
     <li><a href="ViewAppoinment.php"><i class="fas fa-sliders-h"></i>View Appoinment</a></li>

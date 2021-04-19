@@ -1,5 +1,7 @@
 <?php
 include('header/patheader.php');
+require_once ('../Controller/drmedinfo.php');
+$info = getmedicine();
 ?>
 <style>
 *{
@@ -134,12 +136,45 @@ h2{
         text-align: center;
     }
 }
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-right: 47%;
+}
 
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+margin-bottom: 17px;
+    margin-top: 22px;
+    margin-left: 422px;
+
+}
 </style>
 
-<section><div class="table-wrapper">
-    <table class="fl-table">
+<section>
+
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Patient.." title="Type in a name">
+
+<div class="table-wrapper">
+
+    <table id="myTable" class="fl-table">
+	
         <thead>
+		
         <tr>
             <th>Sl</th>
             <th>Patient Name</th>
@@ -150,89 +185,51 @@ h2{
 			<th>Under</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-		 <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-	    <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-	    <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-	    <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-	    <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-	    <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-            <td>Napa Extra</td>
-            <td>Day & Night</td>
-			 <td>1</td>
-			<td>Abdul Hamid</td>
-			
-        </tr>
-       
-       
-       
-        
-       
-        <tbody>
+         <tbody>
+    <?php
+      foreach($info as $info)
+      {
+        echo "<tr>";
+
+        echo "<td>".$info["sl"]."</td>";
+        echo "<td>".$info["patientid"]."</td>";
+  
+
+echo "<td>".$info["roomno"]."</td>";
+echo "<td>".$info["medecine"]."</td>";
+
+            echo "<td>".$info["time"]."</td>";
+			echo "<td>".$info["quantity"]."</td>";
+			echo "<td>".$info["under"]."</td>";
+
+
+        echo "</tr>";
+      }
+    ?>
+
+  </tbody>
     </table>
 </div></section>
   </body>
 </html>
+<script>
+ function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+        </script>
