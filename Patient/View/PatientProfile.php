@@ -84,7 +84,7 @@ form label {
 <div class="container bootstrap snippets bootdeys">
 <div class="row">
   <div class="col-xs-12 col-sm-9">
-    <form class="form-horizontal" method="post" action="../Controller/patientupdate.php"  enctype="multipart/form-data" >
+    <form class="form-horizontal" method="post" action="../Controller/patientupdate.php" onsubmit="return validation()" enctype="multipart/form-data" >
         <div class="panel panel-default">
           <div class="panel-body text-center">
            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle profile-avatar" alt="User avatar">
@@ -105,8 +105,9 @@ form label {
           <div class="form-group">
             <label class="col-sm-2 control-label">Full Name:</label>
             <div class="col-sm-10">
-              <input type="text" name="name" value="<?php echo $data["fullname"]?>" class="form-control">
+              <input type="text" name="name" id="user" value="<?php echo $data["fullname"]?>" class="form-control">
             </div>
+			<span id="username"style="padding-left: 159px;"  class="text-danger font-weight-bold"> </span>
           </div>
 
 		 
@@ -121,16 +122,18 @@ form label {
           <div class="form-group">
             <label class="col-sm-2 control-label">Phone number:</label>
             <div class="col-sm-10">
-              <input type="tel" name="phone" value="<?php echo $data["phone"]?>" class="form-control">
+              <input type="tel" name="phone" id="mobileNumber" value="<?php echo $data["phone"]?>" class="form-control">
             </div>
+			<span id="mobileno" style="padding-left: 159px;"class="text-danger font-weight-bold"> </span>
           </div>
 
         
           <div class="form-group">
             <label class="col-sm-2 control-label">Address:</label>
             <div class="col-sm-10">
-              <input type="text" name="address" value="<?php echo $data["address"]?>" class="form-control">
+              <input type="text" name="address" id="emails" value="<?php echo $data["address"]?>" class="form-control">
             </div>
+			<span id="emailids" style="padding-left: 159px;"class="text-danger font-weight-bold"> </span>
           </div>
         </div>
       </div>
@@ -149,8 +152,9 @@ form label {
           <div class="form-group">
             <label class="col-sm-2 control-label">New password</label>
             <div class="col-sm-10">
-              <input type="password" name="npass"value="<?php echo $data["password"]?>" class="form-control">
+              <input type="password" id="pass" name="npass"value="<?php echo $data["password"]?>" class="form-control">
             </div>
+			<span id="passwords" style="padding-left: 159px;"class="text-danger font-weight-bold"> </span>
           </div>
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
@@ -177,3 +181,106 @@ form label {
 </script></section>
   </body>
 </html>
+
+
+
+
+<script type="text/javascript">
+		
+
+		function validation(){
+
+			var user = document.getElementById('user').value;
+			var pass = document.getElementById('pass').value;
+			
+			var mobileNumber = document.getElementById('mobileNumber').value;
+			var emails = document.getElementById('emails').value;
+
+
+
+
+
+			if(user == ""){
+				document.getElementById('username').innerHTML =" ** Please fill the name field";
+				return false;
+			}
+			if((user.length <= 2) || (user.length > 25)) {
+				document.getElementById('username').innerHTML =" ** name lenght must be between 2 and 25";
+				return false;	
+			}
+			if(!isNaN(user)){
+				document.getElementById('username').innerHTML =" ** only characters are allowed";
+				return false;
+			}
+
+
+
+
+
+
+
+			if(pass == ""){
+				document.getElementById('passwords').innerHTML =" ** Please fill the password field";
+				return false;
+			}
+			if((pass.length <= 5) || (pass.length > 20)) {
+				document.getElementById('passwords').innerHTML =" ** Passwords lenght must be between  5 and 20";
+				return false;	
+			}
+
+
+			
+
+
+
+
+			if(mobileNumber == ""){
+				document.getElementById('mobileno').innerHTML =" ** Please fill the mobile NUmber field";
+				return false;
+			}
+			if(isNaN(mobileNumber)){
+				document.getElementById('mobileno').innerHTML =" ** user must write digits only not characters";
+				return false;
+			}
+			if(mobileNumber.length!=11){
+				document.getElementById('mobileno').innerHTML =" ** Mobile Number must be 11 digits only";
+				return false;
+			}
+
+
+
+			if(emails == ""){
+				document.getElementById('emailids').innerHTML =" ** Please fill the Address field";
+				return false;
+			}
+			
+			if((emails.length <= 2) || (emails.length > 30)) {
+				document.getElementById('emailids').innerHTML =" ** Address lenght must be between 2 and 30";
+				return false;	
+			}
+			
+		}
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
