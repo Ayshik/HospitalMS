@@ -195,9 +195,9 @@ margin-bottom: 17px;
         echo "<td>".$info["patientid"]."</td>";
   
 
-echo "<td>".$info["roomno"]."</td>";
-echo "<td>".$info["medecine"]."</td>";
-
+		echo "<td>".$info["roomno"]."</td>";
+		echo "<td>".$info["medecine"]."</td>";
+	
             echo "<td>".$info["time"]."</td>";
 			echo "<td>".$info["quantity"]."</td>";
 			echo "<td>".$info["under"]."</td>";

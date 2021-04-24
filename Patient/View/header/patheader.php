@@ -27,14 +27,15 @@ if (!isLoggedIn()) {
     <div class="sidebar">
     <header>Patient ~ <?php echo $_SESSION["loggedinuser"];?></header>
   <ul>
+  <li><a href="PatientPanel.php"><i class="fas fa-tachometer-alt"></i>DASHBOARD</a></li>
     <li><a href="PatientProfile.php"><i class="fas fa-qrcode"></i>My Profile</a></li>
-    <li><a href="PatientCurrentStatus.php"><i class="fas fa-link"></i>Current Status</a></li>
+    <li><a href="PatientCurrentStatus.php"><i class="fas fa-link"></i>Apointment Status</a></li>
     <li><a href="PatientTest.php"><i class="fas fa-stream"></i>Tests</a></li>
 	<li><a href="Request.php"><i class="fas fa-stream"></i>Request</a></li>
     <li><a href="DoctorMedicine.php"><i class="fas fa-calendar-week"></i>Doctor and Medicine</a></li>
     <li><a href="MakeAppoinment.php"><i class="far fa-question-circle"></i>Make an Appoinment</a></li>
-    <li><a href="ViewAppoinment.php"><i class="fas fa-sliders-h"></i>View Appoinment</a></li>
-    <li><a href="History.php"><i class="far fa-envelope"></i>History</a></li>
+    <li><a href="ViewAppoinment.php"><i class="fas fa-sliders-h"></i>View All Appoinment</a></li>
+    
 	<li><a href="../Controller/logout.php"><i class="far fa-envelope"></i>Logout</a></li>
 </ul>
 </div>

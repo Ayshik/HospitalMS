@@ -1,6 +1,7 @@
 
 <?php
 include('header/Resheader.php');
+
 ?>
 
 <style>
@@ -61,7 +62,7 @@ include('header/Resheader.php');
 
 
 </style>
-<form class="box" action="" method="post">
+<form class="box" action="../Controller/adddr.php" method="post">
    
     
       <h1>Doctor Registration</h1>

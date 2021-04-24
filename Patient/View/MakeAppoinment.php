@@ -1,6 +1,45 @@
 <?php
 include('header/patheader.php');
+//require "../Models/db_connect.php";
+
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "patient";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+
+
+
+
+    $query = "SELECT * from drinfo where appointment='Active'";
+    $result1 = mysqli_query($conn, $query);
+	$result2 = mysqli_query($conn, $query);
+	 $options="";
+  while ($row2=mysqli_fetch_array($result2))
+  {
+   $options=$options."<option>$row2[2]</option>";
+	
+    
+   
+  
+
+
+  }
+
+
+
+
+
+
 ?>
+
+
+
 <style>
 body {
   margin: 0;
@@ -86,19 +125,29 @@ body {
 </style>
 
 <section>
-
+<form id="myform" method="post" onsubmit="return alart();"action="../Controller/drappointment.php" >
 <div class="box">
-<center><h2 style="color:red">Select Doctor for Appointment</h2></center>
-  <select>
-    <option>Dr alif</option>
-    <option>Dr noor</option>
-    <option>Dr Ayshik</option>
-    <option>Dr masum</option>
-    <option>Dr maria</option>
+<center><h2 style="color:red">Dr Serial</h2></center>
+  <select name="drname">
+  <?php while($row1=mysqli_fetch_array($result1));?>
+    <?php echo $options;?>
+  
+  
   </select><br>
- <button class="button button1">Appoint</button>
+  
+ <button class="button button1" type="submit"name="appointment">Appoint</button>
 </div>
  
 </section>
   </body>
 </html>
+<script>
+function alart(){
+	
+	 alert("Appointment Done check your serial in status!");
+  return true;
+	
+	
+}
+
+</script>

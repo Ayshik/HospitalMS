@@ -1,5 +1,7 @@
 <?php
 include('header/patheader.php');
+require_once ('../Controller/allapointment.php');
+$info=getallapointment();
 ?>
 <style>
 *{
@@ -134,101 +136,114 @@ h2{
         text-align: center;
     }
 }
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-right: 47%;
+}
 
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+margin-bottom: 17px;
+    margin-top: 22px;
+    margin-left: 422px;
+
+}
 </style>
 
+
 <section>
-<section><div class="table-wrapper">
-    <table class="fl-table">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type date of Appointment.." title="Type in a Date">
+
+<div class="table-wrapper">
+
+    <table id="myTable" class="fl-table">
+	
         <thead>
-        <tr>
-            <th>Sl</th>
-            <th>Dr Name</th>
-            <th>Room no</th>
-       
-            <th>Dr Arrival</th>
-			<th>Tocken No</th>
-			<th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
 		
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
+                <th>Sl.</th>
+                  <th>UserName</th>
+                <th>Dr Name</th>
+               
+                <th>Appointment time</th>
+                
+				
+ 
+  
+
+              </thead>
+
+
+              <tbody>
+                <?php
+                  foreach($info as $infos)
+                  {
+                    echo "<tr>";
+                       echo "<td>".$infos["sl"]."</td>";
+                        echo "<td>".$infos["username"]."</td>";
+                      echo "<td>".$infos["drname"]."</td>";
+					   echo "<td>".$infos["datetime"]."</td>";
+					  
+					 
+            
+
            
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-		<tr>
-            <td>1</td>
-            <td>Kuddus Miah</td>
-            <td>120</td>
-           
-            <td>8.00 AM</td>
-			 <td>15</td>
-			<td>14/03/2021</td>
-			
-        </tr>
-       
-       
-        
-       
-        </tbody>
-    </table>
-</div></section>
+                    echo "</tr>";
+                  }
+                ?>
+
+              </tbody>
+
+
+
+
+
+
+
+
+            </table>
+          </div>
+        </div>
+      </div>
+	  </form>
+
+
+
+</section>
   </body>
 </html>
+<script>
+ function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+        </script>
