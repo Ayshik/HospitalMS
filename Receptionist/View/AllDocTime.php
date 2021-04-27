@@ -1,6 +1,8 @@
 
 <?php
 include('header/Resheader.php');
+require_once ('../Controller/adddr.php');
+$info=drapp();
 ?>
 <style>
 * {
@@ -62,7 +64,7 @@ input[type=submit]:hover {
 }
 </style>
  <form  method="post" action="" enctype="multipart/form-data">
-           
+
 
           <center><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for doctor.." title="Type in a name"></center>
 
@@ -79,71 +81,23 @@ input[type=submit]:hover {
 
   </tr>
   <tbody>
-    <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-   <tr>
-	<td>1</td>
-    <td>Noor</td>
-    <td>Heart</td>
-    
-	<td>8.00 PM</td>
-	<td>134</td>
-  </tr>
-  
-  
-   
+    <?php
+      foreach($info as $info)
+      {
+        echo "<tr>";
+
+        echo "<td>".$info["sl"]."</td>";
+        echo "<td>".$info["drname"]."</td>";
+  echo "<td>".$info["spec"]."</td>";
+
+echo "<td>".$info["time"]."</td>";
+
+            echo "<td>".$info["roomno"]."</td>";
+
+
+        echo "</tr>";
+      }
+    ?>
 
   </tbody>
 
@@ -158,3 +112,24 @@ input[type=submit]:hover {
 	</div>
   </body>
 </html>
+	<script>
+function myFunction() {
+ var input, filter, table, tr, td, i, txtValue;
+ input = document.getElementById("myInput");
+ filter = input.value.toUpperCase();
+ table = document.getElementById("myTable");
+ tr = table.getElementsByTagName("tr");
+ for (i = 0; i < tr.length; i++) {
+   td = tr[i].getElementsByTagName("td")[1];
+   if (td) {
+     txtValue = td.textContent || td.innerText;
+     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+       tr[i].style.display = "";
+     } else {
+       tr[i].style.display = "none";
+     }
+   }
+ }
+}
+
+       </script>

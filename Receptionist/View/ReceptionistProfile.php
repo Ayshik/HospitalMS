@@ -93,7 +93,7 @@ form label {
     <form class="form-horizontal" method="post" onsubmit="return validation()" action="../Controller/ReceptionistController.php"  enctype="multipart/form-data" >
         <div class="panel panel-default">
           <div class="panel-body text-center">
-           <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle profile-avatar" alt="User avatar">
+           <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="img-circle profile-avatar" alt="User avatar">
           </div>
         </div>
       <div class="panel panel-default">
@@ -116,7 +116,7 @@ form label {
 			<span id="username"style="padding-left: 159px;"  class="text-danger font-weight-bold"> </span>
           </div>
 
-		  
+
         </div>
       </div>
 
@@ -133,7 +133,7 @@ form label {
 			<span id="mobileno" style="padding-left: 159px;"class="text-danger font-weight-bold"> </span>
           </div>
 
-         
+
           <div class="form-group">
             <label class="col-sm-2 control-label">Home address:</label>
             <div class="col-sm-10">
@@ -158,7 +158,7 @@ form label {
           <div class="form-group">
             <label class="col-sm-2 control-label">New password</label>
             <div class="col-sm-10">
-              <input type="password" id="pass" name="npass" class="form-control">
+              <input type="password" id="pass"  value="<?php echo $info["password"]?>" name="npass" class="form-control">
             </div>
 			<span id="passwords" style="padding-left: 159px;"class="text-danger font-weight-bold"> </span>
           </div>
@@ -170,7 +170,7 @@ form label {
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
               <button type="submit" name="Updateprofile" class="btn btn-primary">Update</button>
-              
+
             </div>
           </div>
         </div>
@@ -193,13 +193,13 @@ form label {
 
 
 <script type="text/javascript">
-		
+
 
 		function validation(){
 
 			var user = document.getElementById('user').value;
 			var pass = document.getElementById('pass').value;
-			
+
 			var mobileNumber = document.getElementById('mobileNumber').value;
 			var emails = document.getElementById('emails').value;
 
@@ -213,7 +213,7 @@ form label {
 			}
 			if((user.length <= 2) || (user.length > 25)) {
 				document.getElementById('username').innerHTML =" ** name lenght must be between 2 and 25";
-				return false;	
+				return false;
 			}
 			if(!isNaN(user)){
 				document.getElementById('username').innerHTML =" ** only characters are allowed";
@@ -232,11 +232,11 @@ form label {
 			}
 			if((pass.length <= 5) || (pass.length > 20)) {
 				document.getElementById('passwords').innerHTML =" ** Passwords lenght must be between  5 and 20";
-				return false;	
+				return false;
 			}
 
 
-			
+
 
 
 
@@ -260,20 +260,12 @@ form label {
 				document.getElementById('emailids').innerHTML =" ** Please fill the Address field";
 				return false;
 			}
-			
+
 			if((emails.length <= 2) || (emails.length > 30)) {
 				document.getElementById('emailids').innerHTML =" ** Address lenght must be between 2 and 30";
-				return false;	
+				return false;
 			}
-			
+
 		}
 
 	</script>
-
-
-
-
-
-
-
-
