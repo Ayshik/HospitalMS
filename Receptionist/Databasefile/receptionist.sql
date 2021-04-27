@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2021 at 05:47 PM
+-- Generation Time: Apr 28, 2021 at 01:55 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -21,6 +21,59 @@ SET time_zone = "+00:00";
 --
 -- Database: `receptionist`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drapp`
+--
+
+CREATE TABLE `drapp` (
+  `sl` int(11) NOT NULL,
+  `drname` varchar(100) NOT NULL,
+  `spec` varchar(100) NOT NULL,
+  `time` varchar(100) NOT NULL,
+  `roomno` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `drapp`
+--
+
+INSERT INTO `drapp` (`sl`, `drname`, `spec`, `time`, `roomno`) VALUES
+(1, 'Dr afsana', 'heart', '6.00pm', '334546'),
+(2, 'Dr Juran', 'Bone', '4.00pm', '334555'),
+(3, 'Dr Shuvo', 'Bone', '4.00pm', '334556'),
+(4, 'Dr Labib', 'Eye', '4.00pm', '334566');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drinfo`
+--
+
+CREATE TABLE `drinfo` (
+  `sl` int(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `nid` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `specialty` varchar(200) NOT NULL,
+  `address` varchar(300) NOT NULL,
+  `roomno` varchar(50) NOT NULL,
+  `appointment` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `drinfo`
+--
+
+INSERT INTO `drinfo` (`sl`, `username`, `fullname`, `phone`, `nid`, `password`, `specialty`, `address`, `roomno`, `appointment`) VALUES
+(12, 'ayshik', 'Ayshik Khan', '01775503498', '123456788543256', 'A1234', 'Heart', 'Northern Ireland,Ballycarry', 'Special-112', 'Active'),
+(13, 'shuvo', 'Shuvo Khan', '01775503498', '123456788543256', 'A1234', 'Heart', 'Northern Ireland,Ballycarry', 'Special-112', 'Active'),
+(14, 'Nadia', 'Nadia Khan', '01775503498', '123456788543256', 'A1234', 'Heart', 'Northern Ireland,Ballycarry', 'Special-112', 'Inactive'),
+(15, 'ttt', 'tttt', '01775503498', '1111111111111', 'afsana12', 'Heart', 'Basundhara', 'Spel-112', '');
 
 -- --------------------------------------------------------
 
@@ -123,6 +176,19 @@ INSERT INTO `room` (`sl`, `type`, `location`, `catagory`, `roomno`, `status`) VA
 --
 
 --
+-- Indexes for table `drapp`
+--
+ALTER TABLE `drapp`
+  ADD PRIMARY KEY (`sl`);
+
+--
+-- Indexes for table `drinfo`
+--
+ALTER TABLE `drinfo`
+  ADD PRIMARY KEY (`sl`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -151,6 +217,18 @@ ALTER TABLE `room`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `drapp`
+--
+ALTER TABLE `drapp`
+  MODIFY `sl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `drinfo`
+--
+ALTER TABLE `drinfo`
+  MODIFY `sl` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `login`
