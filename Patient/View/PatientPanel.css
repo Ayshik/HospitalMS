@@ -147,7 +147,7 @@ label #cancel{
   margin-left: 250px;
 }
 section{
-  background: url(../Image/Hospital.jpg) no-repeat;
+  background: url(../Storage/Hospital.jpg) no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;
