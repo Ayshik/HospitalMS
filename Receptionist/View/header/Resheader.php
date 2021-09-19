@@ -2,6 +2,7 @@
 <?php
       session_start();
 	  include('../Controller/userval.php');
+	  
 if (!isLoggedIn()) {
 
   header('location: ../index.php');
